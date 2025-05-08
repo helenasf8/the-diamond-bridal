@@ -68,6 +68,30 @@ export default {
         </ul>
     </nav>
   </header>
+   <section class="oferecer">
+    <button>Vestido destaque</button>
+
+    <h1>La Promesse</h1>
+    <p>
+        Um vestido de casamento com um toque de elegância. A La Promesse é perfeita para este momento especial, com detalhes que encantam e um caimento que valoriza a silhueta. Feita com tecidos de alta qualidade, ela garante conforto e sofisticação em cada movimento.
+    </p>
+    <button>Acessar página do vestido</button>
+   </section>
+   <section class="beneficios">
+    <span class="mdi mdi-cart"></span>
+    <p>Frete grátis para SC</p>
+    <span class="mdi mdi-heart"></span>
+    <p>Vestidos recomentados</p>
+    <span class="mdi mdi-account"></span>
+    <p>Mais vendidos</p>
+   </section>
+   <section class="Vestidos">
+    <h1>Lançamentos</h1>
+
+
+    </div>
+
+   </section>
 </template>
 
 <style scoped>
