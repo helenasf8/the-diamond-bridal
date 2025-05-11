@@ -123,6 +123,7 @@ return total + (item.produtos.preco * item.quantidade);
           <button @click="adicionarAoCarrinho(produto)">Adicionar ao carrinho</button>
       </div>
     </div>
+    <button class="button-carrinho" @click.prevent="irParaCarrinho">Ir para carrinho</button>
 </section>
 <section class="carrinho" v-if="paginaAtual === 'carrinho'">
   <h3>Carrinho</h3>
@@ -140,6 +141,25 @@ return total + (item.produtos.preco * item.quantidade);
           <button @click="limparCarrinho">Limpar carrinho</button>
     </div>
 </section>
+<footer>
+  <div>
+  <p>Redes Sociais:</p>
+  <ul>
+    <li>
+      <a href="https://x.com/"><span class="mdi mdi-twitter"></span></a>
+    </li>
+    <li>
+      <a href="https://www.instagram.com/"><span class="mdi mdi-instagram"></span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/"><span class="mdi mdi-facebook"></span></a>
+    </li>
+  </ul>
+</div>
+  <p>
+    Copyright &copy; 2025, Todos os direitos reservados
+  </p>
+</footer>
 </template>
 
 <style scoped>
@@ -206,7 +226,7 @@ nav {
 .oferecer {
   text-align: center;
   padding: 2rem;
-  background: #f9f9f9;
+  background: #e2dfdf;
   font-family: "Montserrat", sans-serif;;
 }
 
@@ -244,9 +264,9 @@ nav {
 .lancamentos {
   margin: 5vw 2vw 5vw 2vw;
   font-family: "Montserrat", sans-serif;
+  text-align: center;
 }
 .lancamentos h3 {
- text-align: center;
  font-size: 2rem;
  font-style: italic;
 }
@@ -265,6 +285,17 @@ nav {
   padding: 1vw;
   text-align: center;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.lancamentos button.button-carrinho {
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin: 4vw 0 0 0;
+  padding: 1vw;
+  color: #584c4c;
 }
 
 .produto-card h4 {
@@ -290,11 +321,13 @@ nav {
   padding: 8px;
   margin-top: 10px;
   font-weight: 500;
+  color: #584c4c;
 }
 
 .preco {
   font-weight: bold;
   color: #5a4747;
 }
+
 
 </style>
