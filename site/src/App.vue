@@ -10,14 +10,14 @@ paginaAtual.value = "carrinho";
 const searchQuery = ref('')
 
 const produtos = [
-{ id: 1, titulo: 'Marfim', resenha: 'Descrição breve 1', preco: 49.9, capa: 'https://placehold.co/600x400.png' },
-{ id: 2, titulo: 'Verano', resenha: 'Descrição breve 2', preco: 99.9, capa: 'https://placehold.co/600x400.png' },
-{ id: 3, titulo: 'Seraphine', resenha: 'Descrição breve 3', preco: 9.9, capa: 'https://placehold.co/600x400.png' },
-{ id: 4, titulo: 'Or Blanc', resenha: 'Descrição breve 4', preco: 199.9, capa: 'https://placehold.co/600x400.png' },
-{ id: 5, titulo: 'Lumière', resenha: 'Descrição breve 5', preco: 29.9, capa: 'https://placehold.co/600x400.png' },
-{ id: 6, titulo: 'La Reine', resenha: 'Descrição breve 1', preco: 49.9, capa: 'https://placehold.co/600x400.png' },
-{ id: 7, titulo: 'La Promesse', resenha: 'Descrição breve 2', preco: 99.9, capa: 'https://placehold.co/600x400.png' },
-{ id: 8, titulo: 'Belladona', resenha: 'Descrição breve 3', preco: 9.9, capa: 'https://placehold.co/600x400.png' }
+{ id: 1, titulo: 'Marfim', resenha: 'Descrição breve 1', preco: 49.9, capa: '/img/vestido marfim.jpg' },
+{ id: 2, titulo: 'Verano', resenha: 'Descrição breve 2', preco: 99.9, capa: '/img/Verano.jpg' },
+{ id: 3, titulo: 'Seraphine', resenha: 'Descrição breve 3', preco: 9.9, capa: '/img/Seraphine.jpg' },
+{ id: 4, titulo: 'Or Blanc', resenha: 'Descrição breve 4', preco: 199.9, capa: '/img/Or Blanc.jpg' },
+{ id: 5, titulo: 'Lumière', resenha: 'Descrição breve 5', preco: 29.9, capa: '/img/Lumière.jpg' },
+{ id: 6, titulo: 'La Reine', resenha: 'Descrição breve 1', preco: 49.9, capa: '/img/La Reine.jpg' },
+{ id: 7, titulo: 'La Promesse', resenha: 'Descrição breve 2', preco: 99.9, capa: '/img/La Promesse.jpg' },
+{ id: 8, titulo: 'Belladona', resenha: 'Descrição breve 3', preco: 9.9, capa: '/img/Belladonna.jpg' }
 ]
 
 const filteredItems = computed(() =>
@@ -65,9 +65,6 @@ return total + (item.produtos.preco * item.quantidade);
 </script>
 
 <template>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 <header class="header">
   <nav>
     <img src="/img/logo-site.png" alt="Logo" class="logo" />
