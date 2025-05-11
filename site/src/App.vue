@@ -10,14 +10,14 @@ paginaAtual.value = "carrinho";
 const searchQuery = ref('')
 
 const produtos = [
-{ id: 1, titulo: 'Marfim', resenha: 'Descrição breve 1', preco: 49.9, capa: '/img/vestido marfim.jpg' },
-{ id: 2, titulo: 'Verano', resenha: 'Descrição breve 2', preco: 99.9, capa: '/img/Verano.jpg' },
-{ id: 3, titulo: 'Seraphine', resenha: 'Descrição breve 3', preco: 9.9, capa: '/img/Seraphine.jpg' },
-{ id: 4, titulo: 'Or Blanc', resenha: 'Descrição breve 4', preco: 199.9, capa: '/img/Or Blanc.jpg' },
-{ id: 5, titulo: 'Lumière', resenha: 'Descrição breve 5', preco: 29.9, capa: '/img/Lumière.jpg' },
-{ id: 6, titulo: 'La Reine', resenha: 'Descrição breve 1', preco: 49.9, capa: '/img/La Reine.jpg' },
-{ id: 7, titulo: 'La Promesse', resenha: 'Descrição breve 2', preco: 99.9, capa: '/img/La Promesse.jpg' },
-{ id: 8, titulo: 'Belladona', resenha: 'Descrição breve 3', preco: 9.9, capa: '/img/Belladonna.jpg' }
+{ id: 1, titulo: 'Marfim', resenha: 'Estruturado com cauda volumosa e decote em coração', preco: 12, capa: '/img/vestido marfim.jpg' },
+{ id: 2, titulo: 'Verano', resenha: 'Leve e fluido com tecido esvoaçante, mangas soltas e detalhes rendados.', preco: 9.5, capa: '/img/Verano.jpg' },
+{ id: 3, titulo: 'Seraphine', resenha: 'Corte princesa com saia volumosa e corpo bordado com pedrarias.', preco: 18, capa: '/img/Seraphine.jpg' },
+{ id: 4, titulo: 'Or Blanc', resenha: 'Com brilho dourado discreto e corte ajustado.', preco: 14, capa: '/img/Or Blanc.jpg' },
+{ id: 5, titulo: 'Lumière', resenha: 'Delicado e iluminado com detalhes cintilantes que refletem a luz.', preco: 13.5, capa: '/img/Lumière.jpg' },
+{ id: 6, titulo: 'La Reine', resenha: 'Majestoso de corte clássico com saia ampla e sem mangas.', preco: 20, capa: '/img/La Reine.jpg' },
+{ id: 7, titulo: 'La Promesse', resenha: 'Delicado com caimento suave e iluminado, com bordados sutis.', preco: 10.5, capa: '/img/La Promesse.jpg' },
+{ id: 8, titulo: 'Belladona', resenha: 'Sensual com corte sereia, rendas marcantes e aplicação de flores.', preco: 16, capa: '/img/Belladonna.jpg' }
 ]
 
 const filteredItems = computed(() =>
@@ -113,165 +113,188 @@ return total + (item.produtos.preco * item.quantidade);
   </ul>
 </section>
 <section class="lancamentos" v-if="paginaAtual === 'home'">
-<h3>Lançamentos</h3>
-<div class="produtos-grid">
-<div class="produto-card" v-for="produto in produtos" :key="produto.id">
-<img :src="produto.capa" :alt="produto.titulo" />
-<h4>{{ produto.titulo }}</h4>
-<p>{{ produto.resenha }}</p>
-<p class="preco">R$ {{ produto.preco.toFixed(2) }}</p>
-<button @click="adicionarAoCarrinho(produto)">Adicionar ao carrinho</button>
-</div>
-</div>
+  <h3>Lançamentos</h3>
+    <div class="produtos-grid">
+      <div class="produto-card" v-for="produto in produtos" :key="produto.id">
+        <img :src="produto.capa" :alt="produto.titulo" />
+          <h4>{{ produto.titulo }}</h4>
+            <p>{{ produto.resenha }}</p>
+            <p class="preco">R$ {{ produto.preco.toFixed(3) }}</p>
+          <button @click="adicionarAoCarrinho(produto)">Adicionar ao carrinho</button>
+      </div>
+    </div>
 </section>
-
 <section class="carrinho" v-if="paginaAtual === 'carrinho'">
-<h3>Carrinho</h3>
-<div v-if="carrinho.length === 0">Carrinho vazio</div>
-<div v-else>
-<ul>
-<li v-for="item in carrinho" :key="item.produtos.id">
-{{ item.produtos.titulo }} - R$ {{ item.produtos.preco.toFixed(2) }} x {{ item.quantidade }}
-<button @click="aumentarQuantidade(item.produtos)">+</button>
-<button @click="diminuirQuantidade(item.produtos)">-</button>
-<button @click="removerDoCarrinho(item.produtos)">Remover</button>
-</li>
-</ul>
-<p>Total: R$ {{ calcularTotal().toFixed(2) }}</p>
-<button @click="limparCarrinho">Limpar carrinho</button>
-</div>
+  <h3>Carrinho</h3>
+    <div v-if="carrinho.length === 0">Carrinho vazio</div>
+      <div v-else>
+        <ul>
+          <li v-for="item in carrinho" :key="item.produtos.id">
+            {{ item.produtos.titulo }} - R$ {{ item.produtos.preco.toFixed(2) }} x {{ item.quantidade }}
+            <button @click="aumentarQuantidade(item.produtos)">+</button>
+            <button @click="diminuirQuantidade(item.produtos)">-</button>
+            <button @click="removerDoCarrinho(item.produtos)">Remover</button>
+          </li>
+        </ul>
+          <p>Total: R$ {{ calcularTotal().toFixed(2) }}</p>
+          <button @click="limparCarrinho">Limpar carrinho</button>
+    </div>
 </section>
-
 </template>
 
 <style scoped>
 .header {
-background: #fff;
-border-bottom: 1px solid #ddd;
-font-family: "Montserrat", sans-serif;
-margin: 0 10vw 3vw 10vw;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  font-family: "Montserrat", sans-serif;
+  margin: 0 10vw 3vw 10vw;
 }
 
 .icons span {
-  color: rgb(88, 76, 76);
+  color: #584c4c;
 }
 
 nav {
-display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
-align-items: center;
-padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
 }
 
 .logo {
-width: 8%;
+  width: 8%;
 }
 
 .search-container {
-position: relative;
+  position: relative;
 }
 
 .search-container input {
-padding: 0.5rem;
-border: 1px solid #ccc;
-border-radius: 4px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .search-dropdown {
-position: absolute;
-top: 2.5rem;
-background: white;
-border: 1px solid #ccc;
-width: 100%;
-z-index: 10;
-list-style: none;
-padding: 0.5rem;
+  position: absolute;
+  top: 2.5rem;
+  background: white;
+  border: 1px solid #ccc;
+  width: 100%;
+  z-index: 10;
+  list-style: none;
+  padding: 0.5rem;
 }
 
 .nav-links {
-list-style: none;
-display: flex;
-gap: 1rem;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
 }
 
 .nav-links a {
-text-decoration: none;
-color: #333;
+  text-decoration: none;
+  color: #333;
 }
 
 .icons span {
-font-size: 1.5rem;
-margin-left: 0.5rem;
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
 }
 
 .oferecer {
-text-align: center;
-padding: 2rem;
-background: #f9f9f9;
-font-family: "Montserrat", sans-serif;;
+  text-align: center;
+  padding: 2rem;
+  background: #f9f9f9;
+  font-family: "Montserrat", sans-serif;;
 }
 
 .highlight {
-background: #eee;
-border: none;
-padding: 0.5rem 1rem;
-margin-bottom: 1rem;
-font-weight: bold;
+  background: #eee;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
 }
 
 .cta {
-background: black;
-color: white;
-border: none;
-padding: 0.75rem 1.5rem;
-margin-top: 1rem;
-cursor: pointer;
+  background: black;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
 }
 
 .beneficios ul{
-display: flex;
-justify-content: space-between;
-margin: 0 10vw 0 10vw;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10vw 0 10vw;
 }
 .beneficios ul li {
   text-align: center;
 }
 
 .beneficios div {
-text-align: center;
-font-size: 1rem;
+  text-align: center;
+  font-size: 1rem;
 }
 
 .lancamentos {
-padding: 2rem;
+  margin: 5vw 2vw 5vw 2vw;
+  font-family: "Montserrat", sans-serif;
+}
+.lancamentos h3 {
+ text-align: center;
+ font-size: 2rem;
+ font-style: italic;
 }
 
 .produtos-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-gap: 2rem;
-margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin: 2vw 5vw 0 5vw;
 }
 
 .produto-card {
-background: #fff;
-border: 1px solid #eee;
-border-radius: 8px;
-padding: 1rem;
-text-align: center;
-box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1vw;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.produto-card h4 {
+  font-weight: 500;
+  font-size: 1.3rem;
+  padding-bottom: 1vw;
+}
+.produto-card p {
+  padding-bottom: 10px;
+  text-align: left;
 }
 
 .produto-card img {
-width: 100%;
-border-radius: 4px;
-margin-bottom: 0.5rem;
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  height: 24vw;
+}
+
+.produto-card button {
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  margin-top: 10px;
+  font-weight: 500;
 }
 
 .preco {
-font-weight: bold;
-color: #333;
+  font-weight: bold;
+  color: #5a4747;
 }
 
 </style>
