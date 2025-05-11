@@ -89,20 +89,24 @@ return total + (item.produtos.preco * item.quantidade);
   </nav>
 </header>
 <section class="oferecer">
-  <button class="highlight">Vestido destaque</button>
-  <h1>La Promesse</h1>
+  <div>
+  <h1>Vestido destaque</h1>
+  <h2>La Promesse</h2>
   <p>
     Um vestido de casamento com um toque de elegância. A La Promesse é perfeita para este momento especial, com detalhes que encantam e um caimento que valoriza a silhueta.
   </p>
-  <button class="cta">Acessar página do vestido</button>
+  <a class="button-vestido" href="produto-card">Acessar página do vestido</a>
+  </div>
+  <img src="/img/La Promesse.jpg" alt="La Promesse">
 </section>
+
 <section class="beneficios">
   <ul>
     <li>
       <span class="mdi mdi-truck"></span>
       <p>Frete grátis para SC</p>
     </li>
-    <li>
+    <li class="borda">
       <span class="mdi mdi-heart"></span>
       <p>Vestidos recomendados</p>
     </li>
@@ -112,6 +116,7 @@ return total + (item.produtos.preco * item.quantidade);
     </li>
   </ul>
 </section>
+
 <section class="lancamentos" v-if="paginaAtual === 'home'">
   <h3>Lançamentos</h3>
     <div class="produtos-grid">
@@ -235,45 +240,83 @@ nav {
 }
 
 .oferecer {
-  text-align: center;
-  padding: 2rem;
+  padding: 3vw 15vw 3vw 15vw;
   background: #e2dfdf;
-  font-family: "Montserrat", sans-serif;;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
 }
 
-.highlight {
-  background: #eee;
-  border: none;
-  padding: 0.5rem 1rem;
-  margin-bottom: 1rem;
-  font-weight: bold;
+.oferecer div {
+  margin-top: 4vw;
 }
 
-.cta {
-  background: black;
+.oferecer h1 {
+  font-size: 1.7rem;
+  font-weight: 500;
+  padding-bottom: 1vw;
+  color: #5a4747;
+}
+
+.oferecer h2 {
+  font-size: 1.5rem;
+  font-style: italic;
+  padding-bottom: 0.5vw;
+}
+
+.oferecer p {
+  font-size: 1.3rem;
+  padding-bottom: 3vw;
+  margin: 0 6vw 0 0;
+  line-height: 1.5rem;
+}
+
+.button-vestido {
+  background: #5a4747;
   color: white;
   border: none;
+  border-radius: 10px;
   padding: 0.75rem 1.5rem;
   margin-top: 1rem;
-  cursor: pointer;
+  text-decoration: none;
 }
 
-.beneficios ul{
+.oferecer img {
+  width: 80%;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px #5a4747;
+}
+
+.beneficios {
+  font-family: "Montserrat", sans-serif;
+  margin: 8vw 0 8vw 0;
+}
+
+.beneficios ul li.borda {
+  border-right: 1px solid #5a4747;
+  border-left: 1px solid #5a4747; 
+  padding: 0 7vw 0 7vw;
+}
+
+
+.beneficios ul {
   display: flex;
   justify-content: space-between;
   margin: 0 10vw 0 10vw;
 }
+
 .beneficios ul li {
   text-align: center;
+  border-right: #5a4747;
+  font-size: 1.5rem;
 }
 
-.beneficios div {
-  text-align: center;
-  font-size: 1rem;
+.beneficios ul li span {
+  color: #5a4747;
+  font-size: 2.5rem;
 }
 
 .lancamentos {
-  margin: 5vw 2vw 5vw 2vw;
+  margin: 0 2vw 5vw 2vw;
   font-family: "Montserrat", sans-serif;
   text-align: center;
 }
