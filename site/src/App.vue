@@ -253,7 +253,7 @@ nav {
 
 .nav-links a {
   text-decoration: none;
-  color: #333;
+  color: #5a4747;
 }
 
 .icons span {
@@ -315,7 +315,7 @@ nav {
 
 .beneficios ul li.borda {
   border-right: 1px solid #5a4747;
-  border-left: 1px solid #5a4747; 
+  border-left: 1px solid #5a4747;
   padding: 0 7vw 0 7vw;
 }
 
