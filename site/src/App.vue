@@ -329,5 +329,29 @@ nav {
   color: #5a4747;
 }
 
+footer {
+  background-color: #e2dfdf;
+  padding: 5vw;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+}
 
+footer div p {
+  font-size: 1.3rem;
+}
+
+footer div ul {
+  display: flex;
+  justify-content: center;
+  padding: 0.5vw 0 2vw 0;
+}
+
+footer div ul li span {
+  color: #584c4c;
+  font-size: 2rem;
+
+}
+footer li {
+  padding: 0 0.5vw 0 0.5vw;
+}
 </style>
