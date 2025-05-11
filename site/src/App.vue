@@ -13,7 +13,7 @@ const produtos = [
 { id: 1, titulo: 'Marfim', resenha: 'Estruturado com cauda volumosa e decote em coração', preco: 12, capa: '/img/vestido marfim.jpg' },
 { id: 2, titulo: 'Verano', resenha: 'Leve e fluido com tecido esvoaçante, mangas soltas e detalhes rendados.', preco: 9.5, capa: '/img/Verano.jpg' },
 { id: 3, titulo: 'Seraphine', resenha: 'Corte princesa com saia volumosa e corpo bordado com pedrarias.', preco: 18, capa: '/img/Seraphine.jpg' },
-{ id: 4, titulo: 'Or Blanc', resenha: 'Com brilho dourado discreto e corte ajustado.', preco: 14, capa: '/img/Or Blanc.jpg' },
+{ id: 4, titulo: 'Or Blanc', resenha: 'Simples e elegante, tecido brilhante com cintura alta e corte ajustado.', preco: 14, capa: '/img/Or Blanc.jpg' },
 { id: 5, titulo: 'Lumière', resenha: 'Delicado e iluminado com detalhes cintilantes que refletem a luz.', preco: 13.5, capa: '/img/Lumière.jpg' },
 { id: 6, titulo: 'La Reine', resenha: 'Majestoso de corte clássico com saia ampla e sem mangas.', preco: 20, capa: '/img/La Reine.jpg' },
 { id: 7, titulo: 'La Promesse', resenha: 'Delicado com caimento suave e iluminado, com bordados sutis.', preco: 10.5, capa: '/img/La Promesse.jpg' },
@@ -127,19 +127,30 @@ return total + (item.produtos.preco * item.quantidade);
 </section>
 <section class="carrinho" v-if="paginaAtual === 'carrinho'">
   <h3>Carrinho</h3>
-    <div v-if="carrinho.length === 0">Carrinho vazio</div>
+    <div v-if="carrinho.length === 0" class="div-carrinho-vazio">
+      <p>Seu carrinho está vazio</p>
+    </div>
       <div v-else>
         <ul>
           <li v-for="item in carrinho" :key="item.produtos.id">
-            {{ item.produtos.titulo }} - R$ {{ item.produtos.preco.toFixed(2) }} x {{ item.quantidade }}
-            <button @click="aumentarQuantidade(item.produtos)">+</button>
-            <button @click="diminuirQuantidade(item.produtos)">-</button>
-            <button @click="removerDoCarrinho(item.produtos)">Remover</button>
+            <img :src="item.produtos.capa" />
+            <div>
+              <p>{{ item.produtos.titulo }} - R$ {{ item.produtos.preco.toFixed(3) }} x {{ item.quantidade }}</p>
+            <div class="buttons-carrinho">
+              <button @click="aumentarQuantidade(item.produtos)">+</button>
+              <button @click="diminuirQuantidade(item.produtos)">-</button>
+              <button @click="removerDoCarrinho(item.produtos)">Remover</button>
+            </div>
+            </div>
           </li>
         </ul>
-          <p>Total: R$ {{ calcularTotal().toFixed(2) }}</p>
-          <button @click="limparCarrinho">Limpar carrinho</button>
+          <div class="div-limpar-carrinho">
+            <p>Total: R$ {{ calcularTotal().toFixed(3) }}</p>
+            <button @click="limparCarrinho">Limpar carrinho</button>
+          </div>
+
     </div>
+    <a href="lancamentos">Voltar para a página inicial</a>
 </section>
 <footer>
   <div>
@@ -295,7 +306,7 @@ nav {
   font-size: 1.3rem;
   margin: 4vw 0 0 0;
   padding: 1vw;
-  color: #584c4c;
+  color: #5a4747;
 }
 
 .produto-card h4 {
@@ -306,6 +317,7 @@ nav {
 .produto-card p {
   padding-bottom: 10px;
   text-align: left;
+  line-height: 1.5rem;
 }
 
 .produto-card img {
@@ -321,13 +333,77 @@ nav {
   padding: 8px;
   margin-top: 10px;
   font-weight: 500;
-  color: #584c4c;
+  color: #5a4747;
 }
 
 .preco {
   font-weight: bold;
   color: #5a4747;
 }
+
+.carrinho {
+  margin: 5vw;
+  font-family: "Montserrat", sans-serif ;
+}
+.carrinho h3 {
+  text-align: center;
+  font-size: 2rem;
+  font-style: italic;
+  margin-bottom: 3vw;
+}
+
+.div-carrinho-vazio p{
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1vw;
+}
+
+.carrinho a {
+  color: #5a4747;
+  display: flex;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.carrinho ul li img {
+  width: 15%;
+  height: 18vw;
+}
+.carrinho ul li {
+  display: flex;
+  margin: 0 0 2vw 5vw;
+}
+
+.carrinho ul li button {
+  border: none;
+  margin: 1vw 0 1vw 1vw;
+  padding: 0.3vw 1.5vw 0.3vw 1.5vw;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  color: #5a4747;
+  font-weight: bold;
+ }
+
+ .carrinho ul li p {
+  font-size: 1.3rem;
+  margin-left: 1vw;
+ }
+
+ .carrinho .div-limpar-carrinho p {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 0 0 1vw 5vw;
+ }
+
+ .carrinho button {
+  border: none;
+  padding: 0.5vw 2vw 0.5vw 2vw;
+  font-size: 1rem;
+  border-radius: 10px;
+  color: #5a4747;
+  font-weight: bold;
+  margin-left: 5vw;
+ }
 
 footer {
   background-color: #e2dfdf;
